@@ -227,8 +227,8 @@ public class OWLOntologyID implements Comparable<OWLOntologyID>, Serializable {
     @Override
     public String toString() {
         if (ontologyIRI.isPresent()) {
-            String template = "OntologyID(OntologyIRI(<%s>) VersionIRI(<%s>))";
-            return String.format(template, ontologyIRI.get(), versionIRI.orNull());
+            String version = versionIRI.orNull()==null?"null":versionIRI.orNull().toString();
+            return "OntologyID(OntologyIRI(<"+ontologyIRI.get()+">) VersionIRI(<"+version+">))";
         }
         return "OntologyID(" + internalID.orNull() + ')';
     }
